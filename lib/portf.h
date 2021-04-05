@@ -1,6 +1,8 @@
 typedef struct {
   const char *name;
   float value;
+  // region
+  // date
 } share_t;
 
 const char *get_version();
