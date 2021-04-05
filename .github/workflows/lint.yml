@@ -13,11 +13,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install luarocks
-          sudo apt-get install clang-tidy
-          sudo apt-get install python3-pip
           sudo luarocks install luacheck
-          sudo pip3 install compiledb
-          make db
 
       - name: Lint
         run: make lint

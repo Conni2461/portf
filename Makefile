@@ -1,7 +1,7 @@
 all: portf
 
 portf: build/cli/main.o build/libportf.so
-	gcc -o build/portf build/cli/main.o -L./build -lportf
+	gcc -o build/portf build/cli/main.o -L./build -lportf -lcurl -lcjson
 
 build/cli/main.o: cli/main.c
 	mkdir -pv build/cli
@@ -12,7 +12,7 @@ build/lib/portf.o: lib/portf.c lib/portf.h
 	gcc -c -Wall -Werror -fpic lib/portf.c -o build/lib/portf.o
 
 build/libportf.so: build/lib/portf.o
-	gcc -shared -o build/libportf.so build/lib/portf.o
+	gcc -shared -o build/libportf.so build/lib/portf.o -lcurl -lcjson
 
 .PHONY: test lint format db clean
 test:
@@ -20,7 +20,6 @@ test:
 
 lint:
 	luacheck lua/portf
-	clang-tidy cli/* lib/*
 
 format:
 	clang-format --style=file --dry-run -Werror cli/* lib/*
