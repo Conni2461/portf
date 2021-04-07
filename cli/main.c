@@ -5,15 +5,6 @@
 
 #include <string.h>
 
-share_t *create_shares(char **names, size_t count) {
-  share_t *out = malloc(count * sizeof(share_t));
-  for (int i = 0; i < count; i++) {
-    (out + i)->name = names[i];
-    (out + i)->value = -1;
-  }
-  return out;
-}
-
 typedef enum {
   /* main modes */
   SYNC_MODE,
@@ -32,11 +23,14 @@ void do_search(char **input, int count) {
 }
 
 void print_info(char **input, int count) {
-  share_t *out = create_shares(input, count);
-  get_share(out, count);
+  stock_t *out = malloc(count * sizeof(stock_t));
+  init_shares(out, input, count);
+  get_shares(out, count);
 
   for (int i = 0; i < count; i++) {
-    printf("%s: %f\n", (out + i)->name, (out + i)->value);
+    char *str = stock_to_string(out + i);
+    printf("%s", str);
+    free(str);
   }
   free(out);
 }
