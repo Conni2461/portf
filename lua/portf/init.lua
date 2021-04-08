@@ -82,6 +82,4 @@ m.get_share = function(shares)
   return results
 end
 
--- P(m.get_share({'AAPL', 'AMC', 'GME'}))
-
 return m
