@@ -1,11 +1,10 @@
 # portf
 
-Portf is a cli tool for managing your stocks portfolio. Originally it started as a
+Portf is a cli tool for managing your stonks portfolio. Originally it started as a
 rust project but I didn't get anywhere so here is take 2.
 
-Disclaimer: This is WIP, and I don't encourage or expect anyone to use it or
-adopt it. Future commits may delete this line, so stay tone and watch the repo
-:D
+Disclaimer: This is still WIP, and I don't encourage or expect anyone to use it or
+adopt it. Stay tone for future updates :D
 
 ## Concept and Architecture
 
@@ -15,7 +14,7 @@ Portf is made of the following layers and components:
 
 - C Library: _Logic Layer_
   - processing API requests.
-  - persisting date to & retrieving data from local database.
+  - storing and retrieving data from local database.
 - User Interfaces: _Presentation Layer_
   - CLI:
     - To support scripting and further integrations.
@@ -63,15 +62,16 @@ stupid (kiss).
     +/- for day/week/month/year/since_bought
     etc
   - Watchers which will send notifications when a case happens
-    - e.g. AAPL falls below 100$
+    - e.g. AAPL falls below \$100
     - or maybe even more difficult things (Maybe there is some news api we can
       watch and crawl)
 
 ## Limitations
 
 - Request Rate Limitation, Multiple APIs might be a possible workaround.
-- Limitation pre request: Up to 10 stonks at the same time.  Multiple requests
-  might be a possible workaround.  (`curl_multi_add_handle`)
+- Limitation pre request: Up to 10 stonks at the same time. Sending multiple
+  requests at the same time might be a possible workaround.
+  (`curl_multi_add_handle`)
 
 ## TODO
 
